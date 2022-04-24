@@ -18,7 +18,7 @@
 			},
 			"answer": 7753000000,
 			"date": 2020,
-			"category": "people"
+			"category": "population"
 		},
 		{
 			"id": 3,
@@ -27,6 +27,75 @@
 				"ne": "Hoeveel eilanden heeft het land met de meeste eilanden?"
 			},
 			"answer": 221800,
+			"category": "geology"
+		},
+		{
+			"id": 4,
+			"question": {
+				"en": "How many people browse Instagram daily?",
+				"ne": "Hoeveel mensen browsen dagelijks Instagram?"
+			},
+			"answer": 500000000,
+			"category": "technology"
+		},
+		{
+			"id": 5,
+			"question": {
+				"en": "How many people live in London?",
+				"ne": "Hoeveel mensen wonen in Londen?"
+			},
+			"answer": 8982000,
+			"category": "population"
+		},
+		{
+			"id": 6,
+			"question": {
+				"en": "How many clocks are there in the world?",
+				"ne": "Hoeveel klokken zijn er op de wereld?"
+			},
+			"answer": 5000000000
+		},
+		{
+			"id": 7,
+			"question": {
+				"en": "How many dollars does NASA spend per hour?",
+				"ne": "Hoeveel dollar verbruikt NASA per uur?"
+			},
+			"answer": 2500000
+		},
+		{
+			"id": 8,
+			"question": {
+				"en": "How many dollars does Facebook earn per hour?",
+				"ne": "Hoeveel dollar krijgt Facebook per uur?"
+			},
+			"answer": 8000000
+		},
+		{
+			"id": 8,
+			"question": {
+				"en": "How many dollars does Bill Gates have?",
+				"ne": "Hoeveel dollar heeft Bill Gates?"
+			},
+			"answer": 132300000000,
+			"date": 2022
+		},
+		{
+			"id": 9,
+			"question": {
+				"en": "How long is the circumference of the Earth? (km)",
+				"ne": "Hoe lang is de omtrek van de Aarde? (km)"
+			},
+			"answer": 40075,
+			"category": "geology"
+		},
+		{
+			"id": 10,
+			"question": {
+				"en": "How big is the surface area of the Earth? (km²)",
+				"ne": "Hoe groot is het oppervlakte van de Aarde? (km²)"
+			},
+			"answer": 510100000,
 			"category": "geology"
 		}
 	]
