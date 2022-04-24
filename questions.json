@@ -3,22 +3,31 @@
 		{
 			"id": 0,
 			"question": {
-				"en":"How many iPhones does Apple sell yearly?",
-				"ne":"Hoeveel iPhones verkoopt Apple jaarlijks?"
+				"en": "How many iPhones does Apple sell yearly?",
+				"ne": "Hoeveel iPhones verkoopt Apple jaarlijks?"
 			},
 			"answer": 217720000,
 			"date": 2018,
-			"category":"technology"
+			"category": "technology"
 		},
 		{
 			"id": 1,
 			"question": {
-				"en":"How many people are there on Earth?",
-				"ne":"Hoeveel mensen zijn er op de Aarde?"
+				"en": "How many people are there on Earth?",
+				"ne": "Hoeveel mensen zijn er op de Aarde?"
 			},
 			"answer": 7753000000,
 			"date": 2020,
-			"category":"people"
+			"category": "people"
+		},
+		{
+			"id": 3,
+			"question": {
+				"en": "How many islands does the country with the most islands have?",
+				"ne": "Hoeveel eilanden heeft het land met de meeste eilanden?"
+			},
+			"answer": 221800,
+			"category": "geology"
 		}
 	]
 }
