@@ -31,6 +31,7 @@ body {
 	background-color: var(--background-color-b);
 	font-family: var(--font-family);
 	margin: 0;
+	overflow-x: hidden;
 }
 
 p {
@@ -54,7 +55,7 @@ main {
 	display: flex;
 	gap: 30px;
 	flex-direction: column;
-	width: var(--page-width);
+	max-width: var(--page-width);
 	margin: 45px auto 75px auto;
 }
 
@@ -311,6 +312,7 @@ aside #controller-button {
 	opacity: 0;
 	pointer-events: all;
 	transition: var(--transition-b);
+	transition-property: background-color, opacity;
 	cursor: pointer;
 }
 
@@ -320,6 +322,18 @@ aside #controller-button.active {
 
 aside #controller-button:hover {
 	background-color: var(--highlight-color);
+}
+
+/* #endregion */
+
+/* #region RESPONSIVENESS */
+
+@media screen and (max-width: 500px) {
+	aside #controller-button {
+		right: 15px;
+		left: unset;
+		transform: none;
+	}
 }
 
 /* #endregion */
