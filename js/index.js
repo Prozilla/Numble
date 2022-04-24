@@ -36,12 +36,11 @@ function addPlayer() {
 	let playerId = 0;
 	for (let i = 0; i < Object.keys(players).length; i++) {
 		const id = parseInt(Object.keys(players)[i]);
-		console.log(id);
 		if (id == playerId)
 			playerId = id + 1;
 	}
 
-	const html = `<li class=\"player\" data-player-id=\"${playerId}\"><span class=\"profile\"><p class=\"avatar ${avatarColors[Math.floor(Math.random() * avatarColors.length)]}\" onclick=\"removePlayer(${playerId})\">${name.charAt(0)}</p><p class=\"name\">${name}</p></span><span class=\"guess\"><p class=\"correction\"></p><p class=\"number\"></p></span></li>`;
+	const html = `<li class=\"player\" data-player-id=\"${playerId}\"><span class=\"profile\"><p class=\"avatar ${avatarColors[Math.floor(Math.random() * avatarColors.length)]}\" onclick=\"removePlayer(${playerId})\">${name.charAt(0)}</p><p class=\"name\">${name}</p></span><p class="score"></p><span class=\"guess\"><p class=\"correction\"></p><p class=\"number\"></p></span></li>`;
 	
 	// Add to player list
 	const div = document.createElement("div");
@@ -52,8 +51,6 @@ function addPlayer() {
 
 	if (!controllerButton.classList.contains("active"))
 		controllerButton.classList.add("active");
-
-	console.log(players);
 }
 
 function removePlayer(id) {
@@ -62,8 +59,6 @@ function removePlayer(id) {
 	if (player) {
 		player.remove();
 		delete players[id];
-
-		console.log(players);
 	}
 }
 
@@ -73,8 +68,10 @@ function removePlayer(id) {
 
 function showAnswer() {
 	guessName.parentElement.classList.remove("active");
+	controllerButton.setAttribute("onclick", "nextQuestion()");
 
-	let winner;
+	const correctAnswers = [];
+	let winners = [];
 	let lowestDifference;
 	for (let i = 0; i < playerList.children.length - 1; i++) {
 		const guess = playerList.children[i].querySelector(".guess .number");
@@ -84,6 +81,7 @@ function showAnswer() {
 
 		if (difference < currentQuestion.answer / 10) {
 			correction.classList.add("correct");
+			correctAnswers.push(correction);
 		} else if (guessNumber > currentQuestion.answer) {
 			correction.classList.add("down");
 		} else {
@@ -91,25 +89,28 @@ function showAnswer() {
 		}
 
 		if (lowestDifference == null || difference < lowestDifference) {
-			winner = correction;
+			winners = [correction];
 			lowestDifference = difference;
+		} else if (difference == lowestDifference) {
+			winners.push(correction);
 		}
 	}
 
-	winner.classList.add("winner");
+	for (let i = 0; i < winners.length; i++) {
+		winners[i].classList.add("winner");
+	}
 
 	answer.classList.add("active");
 
-	let delay = 1 / (currentQuestion.answer);
-
-	console.log(delay);
+	// Reveal answer with animation
 	const now = new Date();
-
 	let currentNumber = 0;
+
 	const answerRevealInterval = setInterval(function() {
         if (currentNumber >= currentQuestion.answer) {
 			answer.textContent = currentQuestion.answer;
 			clearInterval(answerRevealInterval);
+
 			let timeDiff = new Date() - now;
 			timeDiff /= 1000;
 			console.log(Math.round(timeDiff * 100) / 100 + " seconds");
@@ -118,9 +119,16 @@ function showAnswer() {
 		}
 
         currentNumber += Math.floor(currentQuestion.answer * answerRevealSpeed + (Math.random() * 2 - 1) * currentQuestion.answer * (answerRevealSpeed / 10));
-    }, delay);
+    }, 1 / currentQuestion.answer);
 
-	controllerButton.setAttribute("onclick", "nextQuestion()");
+	// Add score points
+	winners = winners.concat(correctAnswers);
+
+	for (let i = 0; i < winners.length; i++) {
+		const scoreText = winners[i].parentElement.previousElementSibling;
+		const score = scoreText.textContent ? parseInt(scoreText.textContent) : 0;
+		scoreText.textContent = score + 100;
+	}
 }
 
 function setGuesser() {
@@ -160,7 +168,6 @@ function nextQuestion() {
 		const guessNumber = playerList.children[i].querySelector(".guess .number");
 		guessNumber.textContent = null;
 		guessNumber.previousElementSibling.classList.remove("down", "up", "correct", "winner");
-		console.log(guessNumber.previousElementSibling);
 	}
 
 	// Prepare guess input
@@ -195,9 +202,12 @@ function setUp() {
 	}
 
 	document.addEventListener("keypress", function(event) {
-		if (event.key == "Enter" && newPlayerInput.classList.contains("active")) {
-			if (newPlayerName.value)
+		if (event.key == "Enter") {
+			if (newPlayerInput.classList.contains("active") && newPlayerName.value)
 				addPlayer();
+
+			if (guessInput.parentElement.classList.contains("active") && guessInput.value)
+				addPlayerGuess();
 		}
 	});
 

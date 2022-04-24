@@ -24,19 +24,24 @@
 		</header>
 	
 		<main>
-			<h2 id="question">Players</h2>
+			<h2 id="question">At least one player is required to play.</h2>
 			<span id="guess">
 				<p class="name">Prozilla</p>
 				<input type="number" placeholder="Guess a number">
 			</span>
 			<p id="answer"></p>
 			<ul id="player-list">
-				<!-- <li class="player" data-player-id="0"><span class="profile"><p class="avatar green" onclick="removePlayer(0)">a</p><p class="name">a</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li> -->
-				<!-- <li class="player" data-player-id="1"><span class="profile"><p class="avatar red" onclick="removePlayer(1)">b</p><p class="name">b</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li>
-				<li class="player" data-player-id="2"><span class="profile"><p class="avatar purple" onclick="removePlayer(2)">c</p><p class="name">c</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li>
-				<li class="player" data-player-id="3"><span class="profile"><p class="avatar orange" onclick="removePlayer(3)">d</p><p class="name">d</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li>
-				<li class="player" data-player-id="4"><span class="profile"><p class="avatar green" onclick="removePlayer(4)">e</p><p class="name">e</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li>
-				<li class="player" data-player-id="9"><span class="profile"><p class="avatar orange" onclick="removePlayer(9)">f</p><p class="name">f</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li> -->
+				<li class="player" data-player-id="0">
+					<span class="profile">
+						<p class="avatar green" onclick="removePlayer(0)">P</p>
+						<p class="name">Prozilla</p>
+					</span>
+					<p class="score"></p>
+					<span class="guess">
+						<p class="correction"></p>
+						<p class="number"></p>
+					</span>
+				</li>
 				<span id="add-player">
 					<button title="Add player" onclick="showNewPlayerInput()">
 						<i class="fa-solid fa-plus"></i>

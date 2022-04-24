@@ -15,6 +15,7 @@
 	--header-height: 75px;
 	--page-width: 500px;
 	--player-height: 50px;
+	--input-height: 25px;
 	--border-radius-round: 9999px;
 	--shadow: 0 0 8px 4px var(--background-color-b);
 	--transition-a: 300ms ease-in-out;
@@ -51,6 +52,10 @@ header {
 	box-sizing: border-box;
 }
 
+header h1 {
+	text-transform: uppercase;
+}
+
 main {
 	display: flex;
 	gap: 30px;
@@ -82,6 +87,16 @@ main h2 {
 	margin-right: 2.5px;
 }
 
+#guess input::-webkit-outer-spin-button,
+#guess input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+#guess input {
+	-moz-appearance: textfield;
+}
+
 #answer {
 	display: none;
 	width: fit-content;
@@ -99,7 +114,7 @@ main h2 {
 
 /* #endregion */
 
-/* #region PLAYER LIST*/
+/* #region PLAYER LIST */
 
 #player-list {
 	display: flex;
@@ -111,6 +126,7 @@ main h2 {
 }
 
 #player-list .player {
+	position: relative;
 	display: flex;
 	justify-content: space-between;
 	height: var(--player-height);
@@ -187,6 +203,12 @@ main h2 {
 	background-image: linear-gradient(135deg, var(--blue), var(--green));
 }
 
+.player .score {
+	position: absolute;
+	left: 50%;
+	top: 0;
+}
+
 .player .correction {
 	font-size: 1rem;
 }
@@ -230,7 +252,7 @@ main h2 {
 	display: flex;
 	gap: 7.5px;
 	align-items: center;
-	height: 25px;
+	height: var(--input-height);
 	opacity: 0;
 	transition: opacity var(--transition-a);
 }
@@ -239,13 +261,15 @@ main h2 {
 	opacity: 1;
 }
 
-#add-player span button, #guess button {
-	height: 100%;
-	width: auto;
+#add-player span button, 
+#guess button {
+	height: var(--input-height);
+	width: var(--input-height);
 	font-size: 1rem;
 }
 
-#add-player button, #guess button {
+#add-player button, 
+#guess button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -254,6 +278,7 @@ main h2 {
 	border: none;
 	border-radius: 50%;
 	aspect-ratio: 1;
+	-webkit-tap-highlight-color: transparent;
 	transition: background-color var(--transition-a);
 	cursor: pointer;
 }
@@ -265,12 +290,14 @@ main h2 {
 	font-size: 1.25rem;
 }
 
-#add-player button:hover, #guess button:hover {
+#add-player button:hover, 
+#guess button:hover {
 	background-color: var(--green);
 }
 
-#add-player input, #guess input {
-	height: 100%;
+#add-player input, 
+#guess input {
+	height: var(--input-height);
 	color: var(--text-color);
 	background-color: var(--background-color-a);
 	border: none;
@@ -310,6 +337,7 @@ aside #controller-button {
 	outline: none;
 	box-shadow: var(--shadow);
 	opacity: 0;
+	text-transform: uppercase;
 	pointer-events: all;
 	transition: var(--transition-b);
 	transition-property: background-color, opacity;
@@ -329,6 +357,10 @@ aside #controller-button:hover {
 /* #region RESPONSIVENESS */
 
 @media screen and (max-width: 500px) {
+	main {
+		margin: 45px 15px 75px 15px;
+	}
+
 	aside #controller-button {
 		right: 15px;
 		left: unset;
