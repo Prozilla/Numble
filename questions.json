@@ -1,0 +1,24 @@
+{
+	"questions":[
+		{
+			"id": 0,
+			"question": {
+				"en":"How many iPhones does Apple sell yearly?",
+				"ne":"Hoeveel iPhones verkoopt Apple jaarlijks?"
+			},
+			"answer": 217720000,
+			"date": 2018,
+			"category":"technology"
+		},
+		{
+			"id": 1,
+			"question": {
+				"en":"How many people are there on Earth?",
+				"ne":"Hoeveel mensen zijn er op de Aarde?"
+			},
+			"answer": 7753000000,
+			"date": 2020,
+			"category":"people"
+		}
+	]
+}

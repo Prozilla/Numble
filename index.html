@@ -1,0 +1,58 @@
+<html lang="en">
+	<head>
+		<title>Numble</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+		<!-- STYLE -->
+		<link rel="stylesheet" href="css/style.css">
+		<script rel="preconnect" src="https://kit.fontawesome.com/241f6baf1e.js"></script>
+
+		<!-- FONT -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<h1>Numble</h1>
+			<!-- <label id="language">
+				<select>
+					<option value="en" selected>English</option>
+					<option value="ne">Dutch</option>
+				</select>
+			</label> -->
+		</header>
+	
+		<main>
+			<h2 id="question">Players</h2>
+			<span id="guess">
+				<p class="name">Prozilla</p>
+				<input type="number" placeholder="Guess a number">
+			</span>
+			<p id="answer"></p>
+			<ul id="player-list">
+				<!-- <li class="player" data-player-id="0"><span class="profile"><p class="avatar green" onclick="removePlayer(0)">a</p><p class="name">a</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li> -->
+				<!-- <li class="player" data-player-id="1"><span class="profile"><p class="avatar red" onclick="removePlayer(1)">b</p><p class="name">b</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li>
+				<li class="player" data-player-id="2"><span class="profile"><p class="avatar purple" onclick="removePlayer(2)">c</p><p class="name">c</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li>
+				<li class="player" data-player-id="3"><span class="profile"><p class="avatar orange" onclick="removePlayer(3)">d</p><p class="name">d</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li>
+				<li class="player" data-player-id="4"><span class="profile"><p class="avatar green" onclick="removePlayer(4)">e</p><p class="name">e</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li>
+				<li class="player" data-player-id="9"><span class="profile"><p class="avatar orange" onclick="removePlayer(9)">f</p><p class="name">f</p></span><span class="guess"><p class="correction"></p><p class="number"></p></span></li> -->
+				<span id="add-player">
+					<button title="Add player" onclick="showNewPlayerInput()">
+						<i class="fa-solid fa-plus"></i>
+					</button>
+					<span>
+						<input id="new-player-name" type="text" placeholder="Name">
+						<button onclick="addPlayer()"><i class="fa-solid fa-check"></i></button>
+					</span>
+				</span>
+			</ul>
+		</main>
+
+		<aside>
+			<button id="controller-button" onclick="startQuiz()">Start</button>
+		</aside>
+	
+		<script src="js/index.js"></script>
+	</body>
+</html>
