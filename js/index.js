@@ -6,14 +6,17 @@ const questionTitle = document.querySelector("#question");
 const guessName = document.querySelector("#guess .name");
 const guessInput = document.querySelector("#guess input");
 const answer = document.querySelector("#answer");
+const guessVisibilityToggle = document.querySelector("#toggle-guess-visibility");
 
 let currentGuesserIndex;
+let visibileGuesses = true;
 const players = {};
 const avatarColors = ["red", "orange", "green", "purple"];
 
 let currentQuestion;
 let questions;
 let completedQuestions = [];
+let showingAnswer = false;
 
 const answerRealDuration = 1.5; // In seconds (exact)
 const answerRevealSpeed = 4 / answerRealDuration / 1000;
@@ -66,7 +69,22 @@ function removePlayer(id) {
 
 //#region QUIZ
 
+function toggleGuessVisibility() {
+	visibileGuesses = !visibileGuesses;
+
+	if (visibileGuesses) {
+		guessVisibilityToggle.classList.remove("active");
+		playerList.classList.remove("hidden-guesses");
+	} else {
+		guessVisibilityToggle.classList.add("active");
+
+		if (!showingAnswer)
+			playerList.classList.add("hidden-guesses");
+	}
+}
+
 function showAnswer() {
+	showingAnswer = true;
 	guessName.parentElement.classList.remove("active");
 	controllerButton.setAttribute("onclick", "nextQuestion()");
 
@@ -100,6 +118,7 @@ function showAnswer() {
 		winners[i].classList.add("winner");
 	}
 
+	playerList.classList.remove("hidden-guesses");
 	answer.classList.add("active");
 
 	// Reveal answer with animation
@@ -155,11 +174,15 @@ function nextQuestion() {
 	if (completedQuestions.length == questions.length)
 		completedQuestions = [];
 
+	if (!visibileGuesses)
+		playerList.classList.add("hidden-guesses");
+
 	do {
 		currentQuestion = questions[Math.floor(Math.random() * questions.length)];
 	} while (completedQuestions.includes(currentQuestion.id));
 	completedQuestions.push(currentQuestion.id);
 
+	showingAnswer = false;
 	questionTitle.textContent = currentQuestion.question.en;
 
 	// Reset previous question
