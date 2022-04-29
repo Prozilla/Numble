@@ -21,6 +21,14 @@ let showingAnswer = false;
 const answerRealDuration = 1.5; // In seconds (exact)
 const answerRevealSpeed = 4 / answerRealDuration / 1000;
 
+function formatNumber(number) {
+	if (number < 1000) {
+		return number;
+	} else {
+		return Number(number.toFixed(0)).toLocaleString().split(/,/g).join(".");
+	}
+}
+
 //#region PLAYERS
 
 function showNewPlayerInput() {
@@ -127,14 +135,14 @@ function showAnswer() {
 
 	const answerRevealInterval = setInterval(function() {
         if (currentNumber >= currentQuestion.answer) {
-			answer.textContent = currentQuestion.answer;
+			answer.textContent = formatNumber(currentQuestion.answer);
 			clearInterval(answerRevealInterval);
 
 			let timeDiff = new Date() - now;
 			timeDiff /= 1000;
 			console.log(Math.round(timeDiff * 100) / 100 + " seconds");
 		} else {
-			answer.textContent = currentNumber
+			answer.textContent = formatNumber(currentNumber);
 		}
 
         currentNumber += Math.floor(currentQuestion.answer * answerRevealSpeed + (Math.random() * 2 - 1) * currentQuestion.answer * (answerRevealSpeed / 10));
