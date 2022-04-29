@@ -146,7 +146,7 @@ function showAnswer() {
 		}
 
         currentNumber += Math.floor(currentQuestion.answer * answerRevealSpeed + (Math.random() * 2 - 1) * currentQuestion.answer * (answerRevealSpeed / 10));
-    }, 1 / currentQuestion.answer);
+    }, 4);
 
 	// Add score points
 	winners = winners.concat(correctAnswers);
