@@ -19,7 +19,7 @@ let completedQuestions = [];
 let showingAnswer = false;
 
 const answerRealDuration = 1.5; // In seconds (exact)
-const answerRevealSpeed = 4 / answerRealDuration / 1000;
+const answerRevealSpeed = 10 / answerRealDuration / 1000;
 
 function formatNumber(number) {
 	if (number < 1000) {
@@ -146,7 +146,7 @@ function showAnswer() {
 		}
 
         currentNumber += Math.floor(currentQuestion.answer * answerRevealSpeed + (Math.random() * 2 - 1) * currentQuestion.answer * (answerRevealSpeed / 10));
-    }, 4);
+    }, 10);
 
 	// Add score points
 	winners = winners.concat(correctAnswers);
